@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdelrahman Magdy Fahmy</title>
+<style>
+  html, body { height: 100%; margin: 0; overflow: hidden; }
+  body { background: url("background.svg") center / cover no-repeat; display: flex; align-items: center; justify-content: center; }
+  #logo { width: min(22vw, 30vh); height: min(22vw, 30vh); object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
+  #pitch { position: fixed; inset: 0; pointer-events: none; }
+  .p { position: absolute; transform: translate(-50%, -50%); text-align: center; }
+  .dot { width: 3vmin; height: 3vmin; min-width: 14px; min-height: 14px; margin: 0 auto; border-radius: 50%; background: #c8102e; border: 2px solid #fff; }
+  .name { margin-top: 4px; color: #fff; font: 600 clamp(10px, 1.3vw, 16px) sans-serif; text-shadow: 0 1px 3px rgba(0,0,0,.8); white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div id="pitch"></div>
+  <img id="logo" src="liverpool-logo.png" alt="Liverpool">
+  <script>
+    // [name, x%, y%]  -- edit the names or positions here
+    var lineup = [
+      ["Alisson", 7, 50],
+      ["Araújo", 24, 82], ["Van Dijk", 20, 62], ["Jacquet", 20, 38], ["Kerkez", 24, 18],
+      ["Mac Allister", 36, 62], ["Szoboszlai", 36, 38],
+      ["Barcola", 64, 82], ["Wirtz", 68, 50], ["Gakpo", 64, 18],
+      ["Isak", 86, 50]
+    ];
+    var pitch = document.getElementById("pitch");
+    lineup.forEach(function (p) {
+      var d = document.createElement("div");
+      d.className = "p";
+      d.style.left = p[1] + "%";
+      d.style.top = p[2] + "%";
+      d.innerHTML = '<div class="dot"></div><div class="name"></div>';
+      d.querySelector(".name").textContent = p[0];
+      pitch.appendChild(d);
+    });
+  </script>
+</body>
+</html>
