@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PROJECT = 'liverpool'
-        COMPOSE = 'docker-compose.yaml'
+        COMPOSE = 'docker-compose.yml'
     }
 
     stages {
