@@ -2,16 +2,11 @@ pipeline {
     agent any
 
     environment {
-        PROJECT = 'Liverpoll'
-        COMPOSE = 'Docker-compose.yaml'
+        PROJECT = 'liverpool'
+        COMPOSE = 'Docker-compose.pro.yaml'
     }
 
     stages {
-        stage('checkout') {
-            steps {
-                git url: 'https://github.com/abdelrhmanmagdi03-bot/magdos.git', branch: 'main'
-            }
-        }
         stage('pre-check') {
             steps {
                 sh 'ls -la'
