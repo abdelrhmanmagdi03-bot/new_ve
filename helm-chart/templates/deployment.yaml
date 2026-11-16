@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: {{ .Values.namedeployment }}
+  namespace: default
+spec:
+  replicas: {{ .Values.numberreplicas }}
+  selector: 
+    matchLabels:
+      app: {{ .Values.labels }}
+  strategy: 
+    type: {{ .Values.strategytype }}
+  template:
+    metadata:
+      name: {{ .Values.nameofmeta }}
+      labels: 
+        app: {{ .Values.labels }} 
+    spec :
+      volumes: 
+        - name: {{ .Values.volumename }}
+          persistentVolumeClaim: 
+            claimName: {{ .Values.pvcname }}
+      containers:
+        - name: {{ .Values.nameofpod }}
+          image: {{ .Values.imagerebo }}
+          startupProbe:
+            initialDelaySeconds: {{ .Values.startupProbeinitialDelaySeconds }}
+            periodSeconds: {{ .Values.startupProbeperiodSeconds }}
+            exec: 
+              command: ['pwd']
+          livenessProbe: 
+            initialDelaySeconds: {{ .Values.livenessProbeinitialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbeperiodSeconds}}
+            exec: 
+              command: ['pwd']
+          readinessProbe: 
+             initialDelaySeconds: {{ .Values.readinessProbeinitialDelaySeconds }}
+             periodSeconds: {{ .Values.readinessProbeperiodSeconds }}
+             exec: 
+              command: ['pwd']
+          resources: 
+            requests: 
+              cpu: {{ .Values.resourcesrequestscpu }}
+              memory: {{ .Values.resourcesrequestsmemory }}
+            limits: 
+              cpu: {{ .Values.resourcelimitscpu }}
+              memory: {{ .Values.resourcelimitsmemory }}
+          envFrom: 
+           - configMapRef:
+              name: {{ .Values.nameconfigmap }}
+          ports: 
+             - protocol: {{ .Values.portpro }}
+               containerPort: 80
+            
+          
