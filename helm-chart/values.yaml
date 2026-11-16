@@ -42,6 +42,7 @@ volumeBindingMode: Immediate
 provisioner: k8s.io/minikube-hostpath 
 allowVolumeExpansion: true
 porttag: 80
+targetPort: 3000
 config:
   dateandtime: 15nov2026
   title: devops
