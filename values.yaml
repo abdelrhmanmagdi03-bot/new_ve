@@ -1,0 +1,50 @@
+nameconfigmap: mainconfig
+namedeployment: maindeployment  
+numberreplicas: 3
+labels: main
+strategytype: RollingUpdate
+nameofmeta: main1 
+volumename: mainvolumes 
+pvcname: apppvc
+nameofpod: mainpod 
+imagerebo: docker.io/amffahmi/app2026:v1
+startupProbeinitialDelaySeconds: 1
+startupProbeperiodSeconds: 1 
+startupProbecommand: ['pwd']
+livenessProbeinitialDelaySeconds: 5
+livenessProbeperiodSeconds: 5
+livenessProbecommand: 
+ - pgrep
+ - node 
+readinessProbeinitialDelaySeconds: 7
+readinessProbeperiodSeconds: 7
+readinessProbecommand: ['pgrep', 'node']
+resourcesrequestscpu: 1500m
+resourcesrequestsmemory: 1.5Gi
+resourcelimitscpu: 2500m 
+resourcelimitsmemory:  2.5Gi
+portpro: TCP
+containerPortnumber: 80 
+ingressname: mainingress 
+hostname: main.dev
+pathType: Prefix 
+path: /
+nameservices: mainservices
+storageClassName: mainstorage
+accessModes: ReadWriteOnce
+volumeMode: Filesystem
+requests: 2Gi
+typeofservices: NodePort
+nemme: newserv
+nodePort: 30333
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+provisioner: k8s.io/minikube-hostpath 
+allowVolumeExpansion: true
+porttag: 80
+config:
+  dateandtime: 15nov2026
+  title: devops
+  user: abdelrhman
+  MONGO_URI: "mongodb://root:rootpass123@mongo:27017/profiledb?authSource=admin"
+  PORT: "3000"
