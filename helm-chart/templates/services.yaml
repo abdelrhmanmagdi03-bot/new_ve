@@ -11,4 +11,5 @@ spec:
       nodePort: {{ .Values.nodePort }}
       protocol: {{ .Values.portpro }}
       port: {{ .Values.containerPortnumber }}
+      targetPort: {{ .Values.targetPort }}
     
